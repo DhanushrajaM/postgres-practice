@@ -79,14 +79,13 @@ SELECT REPEAT ('* ',num) AS Pattern FROM pattern;
 
 
 --Fibonacci Sequence
-WITH RECURSIVE FibonacciCTE AS (
-    SELECT 0 AS n, 0 AS fib
+WITH RECURSIVE Fibonacci AS (
+    SELECT 0 AS n, 0 AS fib, 1 AS next_fib
     UNION ALL
-    SELECT 1 AS n, 1 AS fib
-
-    UNION ALL
-    SELECT n + 1, fib + LAG(fib) OVER (ORDER BY n) 
-    FROM FibonacciCTE
-    WHERE n < 7
+    SELECT n + 1, next_fib AS fib, fib + next_fib AS next_fib
+    FROM Fibonacci
+    WHERE n < 9
 )
-SELECT * FROM FibonacciCTE;
+SELECT n, fib
+FROM Fibonacci;
+
