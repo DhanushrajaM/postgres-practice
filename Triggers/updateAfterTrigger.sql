@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS orders (
     order_time TIMESTAMP DEFAULT NOW()
 );
 
-TRUNCATE TABLE product RESTART IDENTITY;
 
 INSERT INTO product(product_name, stock) VALUES
 ('Laptop', 50),
@@ -41,3 +40,11 @@ INSERT INTO orders(product_id, quantity) VALUES (1, 5);
 INSERT INTO orders(product_id, quantity) VALUES (2, 10); 
 
 SELECT * FROM product;
+
+
+output
+ product_id | product_name | stock
+------------+--------------+-------
+          3 | Keyboard     |    75
+          1 | Laptop       |    45
+          2 | Mouse        |    90
